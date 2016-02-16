@@ -1,0 +1,21 @@
+[
+  {
+    "modid": "FortuneBlocks",
+    "name": "FortuneBlocks",
+    "description": "Making you more rich with fortuning blocks",
+    "version": "0.1.0",
+    "mcversion": "1.8.9",
+    "url": "https://github.com/GamingsModding/FortuneBlocks",
+    "updateUrl": "",
+    "authorList": [
+      "RageGamingPE"
+    ],
+    "credits": "Programming: RageGamingPE, Textures: HardcoreGamingMC",
+    "logoFile": "",
+    "screenshots": [
+    ],
+    "parent": "",
+    "dependencies": [
+    ]
+  }
+]
