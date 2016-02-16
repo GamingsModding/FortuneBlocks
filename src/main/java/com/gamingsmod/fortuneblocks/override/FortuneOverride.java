@@ -18,23 +18,31 @@ public class FortuneOverride
             int fortuneLvl = e.fortuneLevel;
             Block block = e.state.getBlock();
             String firstOre = "";
+            ItemStack itemDropping = e.drops.iterator().next();
+
             if (!e.isSilkTouching) {
-                firstOre = ToolExp.getFirstOreDicName(new ItemStack(block));
+                firstOre = getFirstOreDicName(new ItemStack(block));
             } else {
-                firstOre = ToolExp.getFirstOreDicName(e.drops.iterator().next());
+                firstOre = getFirstOreDicName(itemDropping);
             }
 
-            System.out.println(firstOre);
-
-            if (fortuneLvl > 0 && firstOre.startsWith("ore")) {
-//                    System.out.println("Fired");
+            if ((fortuneLvl > 0 || e.isSilkTouching) && firstOre.startsWith("ore")) {
+                System.out.println("Fired");
                 Random rand = new Random();
-                ItemStack itemDropping = e.drops.iterator().next();
+                System.out.println(itemDropping);
                 e.drops.clear();
 
-                itemsDropping = rand.nextInt(fortuneLvl + 1);
+                itemsDropping = rand.nextInt(fortuneLvl + 1) + 1;
                 e.drops.add(new ItemStack(itemDropping.getItem(), itemsDropping));
             }
         }
+    }
+
+    public static String getFirstOreDicName(ItemStack itemStack)
+    {
+        String[] names = ToolExp.getOreDicNames(itemStack);
+        if (names.length > 0)
+            return names[0];
+        return "";
     }
 }

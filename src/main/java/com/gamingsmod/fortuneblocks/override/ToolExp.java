@@ -78,14 +78,6 @@ public class ToolExp
         return names;
     }
 
-    public static String getFirstOreDicName(ItemStack itemStack)
-    {
-        String[] names = getOreDicNames(itemStack);
-        if (names.length > 0)
-            return names[0];
-        return "";
-    }
-
     public double expGain(Block block)
     {
         for (String name : getOreDicNames(new ItemStack(block))) {
