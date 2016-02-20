@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 
 public class ToolExp
 {
+    public static final String TAG_EXTRAFORTUNE = "extFortune";
 
     @SubscribeEvent
     public void onItemToolTip(ItemTooltipEvent e)
@@ -29,7 +30,7 @@ public class ToolExp
 
         if (e.itemStack.getItem() instanceof ItemPickaxe) {
             ItemStack pickaxe = e.itemStack;
-            double level = NBTHelper.getDouble(pickaxe, "extFortuneAmount");
+            double level = NBTHelper.getDouble(pickaxe, TAG_EXTRAFORTUNE);
             DecimalFormat df = new DecimalFormat("#.##");
             df.setRoundingMode(RoundingMode.CEILING);
             String percent = df.format(level) + "%";
@@ -44,11 +45,11 @@ public class ToolExp
         if (e.getPlayer() != null && isRealPlayer(e.getPlayer())) {
             ItemStack pickaxe = e.getPlayer().getHeldItem();
             if (pickaxe.getItem() instanceof ItemPickaxe) {
-                double level = NBTHelper.getDouble(pickaxe, "extFortuneAmount");
+                double level = NBTHelper.getDouble(pickaxe, TAG_EXTRAFORTUNE);
                 Block broken = e.state.getBlock();
                 double addLevel = expGain(broken);
                 level = level + addLevel;
-                NBTHelper.setDouble(pickaxe, "extFortuneAmount", level);
+                NBTHelper.setDouble(pickaxe, TAG_EXTRAFORTUNE, level);
             }
         }
     }

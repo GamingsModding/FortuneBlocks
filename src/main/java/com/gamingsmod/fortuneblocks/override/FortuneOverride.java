@@ -1,12 +1,10 @@
 package com.gamingsmod.fortuneblocks.override;
 
-import net.minecraft.block.Block;
+import com.gamingsmod.fortuneblocks.helper.NBTHelper;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.Random;
 
 public class FortuneOverride
 {
@@ -14,26 +12,16 @@ public class FortuneOverride
     public void onHarvest(BlockEvent.HarvestDropsEvent e)
     {
         if (e.harvester != null && e.harvester.getHeldItem().getItem() instanceof ItemPickaxe) {
-            int itemsDropping = 0;
-            int fortuneLvl = e.fortuneLevel;
-            Block block = e.state.getBlock();
-            String firstOre = "";
-            ItemStack itemDropping = e.drops.iterator().next();
+            double extraFortune = NBTHelper.getDouble(e.harvester.getHeldItem(), ToolExp.TAG_EXTRAFORTUNE);
+            System.out.println(extraFortune);
 
-            if (!e.isSilkTouching) {
-                firstOre = getFirstOreDicName(new ItemStack(block));
+            if (e.isSilkTouching) {
+
             } else {
-                firstOre = getFirstOreDicName(itemDropping);
-            }
+                ItemStack[] droppingItems = new ItemStack[e.drops.size()];
+                while (e.drops.iterator().hasNext()) {
 
-            if ((fortuneLvl > 0 || e.isSilkTouching) && firstOre.startsWith("ore")) {
-                System.out.println("Fired");
-                Random rand = new Random();
-                System.out.println(itemDropping);
-                e.drops.clear();
-
-                itemsDropping = rand.nextInt(fortuneLvl + 1) + 1;
-                e.drops.add(new ItemStack(itemDropping.getItem(), itemsDropping));
+                }
             }
         }
     }
