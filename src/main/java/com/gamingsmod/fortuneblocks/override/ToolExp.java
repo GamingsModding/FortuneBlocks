@@ -35,7 +35,7 @@ public class ToolExp
             df.setRoundingMode(RoundingMode.CEILING);
             String percent = df.format(level) + "%";
 
-            e.toolTip.add(String.format(StatCollector.translateToLocal("fortuneblocks.tooltip.fortune"), percent));
+            e.toolTip.add(StatCollector.translateToLocalFormatted("fortuneblocks.tooltip.extfortune", percent));
         }
     }
 

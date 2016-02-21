@@ -13,14 +13,18 @@ public class FortuneOverride
     {
         if (e.harvester != null && e.harvester.getHeldItem().getItem() instanceof ItemPickaxe) {
             double extraFortune = NBTHelper.getDouble(e.harvester.getHeldItem(), ToolExp.TAG_EXTRAFORTUNE);
-            System.out.println(extraFortune);
+            extraFortune = extraFortune / 100;
+//            System.out.println(extraFortune);
 
             if (e.isSilkTouching) {
-
+                //TODO
             } else {
-                ItemStack[] droppingItems = new ItemStack[e.drops.size()];
-                while (e.drops.iterator().hasNext()) {
-
+                if (getFirstOreDicName(new ItemStack(e.state.getBlock())).startsWith("ore")) {
+                    ItemStack itemDropping = e.drops.iterator().next();
+                    int fortuneLvl = e.fortuneLevel;
+                    Double fortune = fortuneLvl + extraFortune;
+                    e.drops.clear();
+                    e.drops.add(new ItemStack(itemDropping.getItem(), fortune.intValue()));
                 }
             }
         }
