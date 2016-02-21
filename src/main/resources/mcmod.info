@@ -3,8 +3,8 @@
     "modid": "FortuneBlocks",
     "name": "FortuneBlocks",
     "description": "Making you more rich with fortuning blocks",
-    "version": "0.1.0",
-    "mcversion": "1.8.9",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
     "url": "https://github.com/GamingsModding/FortuneBlocks",
     "updateUrl": "",
     "authorList": [
