@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class FortuneBlocks
@@ -32,5 +33,11 @@ public class FortuneBlocks
     public void postInit(FMLPostInitializationEvent e)
     {
         proxy.postinit(e);
+    }
+
+    @Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent e)
+    {
+        proxy.serverStarting(e);
     }
 }
