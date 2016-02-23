@@ -1,19 +1,20 @@
 package com.gamingsmod.fortuneblocks.override;
 
+import com.gamingsmod.fortuneblocks.evalate.AxeXp;
+import com.gamingsmod.fortuneblocks.evalate.PickaxeXp;
 import com.gamingsmod.fortuneblocks.helper.NBTHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.oredict.OreDictionary;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -49,7 +50,7 @@ public class ToolExp
             if (pickaxe != null && (pickaxe.getItem() instanceof ItemPickaxe || pickaxe.getItem() instanceof ItemAxe)) {
                 double level = NBTHelper.getDouble(pickaxe, TAG_EXTRAFORTUNE);
                 Block broken = e.state.getBlock();
-                double addLevel = expGain((ItemTool) e.getPlayer().getHeldItem().getItem(), broken);
+                double addLevel = expGain((Item) e.getPlayer().getHeldItem().getItem(), broken);
                 level = level + addLevel;
                 NBTHelper.setDouble(pickaxe, TAG_EXTRAFORTUNE, level);
             }
@@ -70,46 +71,11 @@ public class ToolExp
         return !(player instanceof FakePlayer || fakePlayerPattern.matcher(name).matches());
     }
 
-    public static String[] getOreDicNames(ItemStack itemStack)
-    {
-        int[] ids = OreDictionary.getOreIDs(itemStack);
-        String[] names = new String[ids.length];
-        for (int i = 0; i < ids.length; i++) {
-            names[i] = OreDictionary.getOreName(ids[i]);
-        }
-
-        return names;
-    }
-
-    public double expGain(ItemTool tool, Block block) {
+    public double expGain(Item tool, Block block) {
         if (tool instanceof ItemPickaxe) {
-            for (String name : getOreDicNames(new ItemStack(block))) {
-                if (name.equals("oreCoal")) {
-                    return 0.1;
-                } else if (name.equals("oreCopper")) {
-                    return 0.15;
-                } else if (name.equals("oreIron")) {
-                    return 0.2;
-                } else if (name.equals("oreLapis")) {
-                    return 0.2;
-                } else if (name.equals("oreRedstone")) {
-                    return 0.3;
-                } else if (name.equals("oreGold")) {
-                    return 0.35;
-                } else if (name.equals("oreDiamond")) {
-                    return 0.5;
-                } else if (name.equals("oreQuartz")) {
-                    return 0.5;
-                } else if (name.equals("oreEmerald")) {
-                    return 0.75;
-                }
-            }
+            return PickaxeXp.evaluate(block);
         } else if (tool instanceof ItemAxe) {
-            for (String name : getOreDicNames(new ItemStack(block))) {
-                if (name.startsWith("log")) {
-                    return 0.2;
-                }
-            }
+            return AxeXp.evalate(block);
         }
         return 0;
     }
