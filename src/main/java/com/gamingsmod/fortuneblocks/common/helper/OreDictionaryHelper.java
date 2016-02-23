@@ -1,4 +1,4 @@
-package com.gamingsmod.fortuneblocks.helper;
+package com.gamingsmod.fortuneblocks.common.helper;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;

@@ -1,2 +1,6 @@
+# Item
+item.fortuneblocks:fortuneHolder.name=Fortune Holder
+
 # Tooltips
 fortuneblocks.tooltip.extfortune=Extra Fortune: %s
+fortuneblocks.tooltip.holdShift=Hold &5Shift&7 for more information

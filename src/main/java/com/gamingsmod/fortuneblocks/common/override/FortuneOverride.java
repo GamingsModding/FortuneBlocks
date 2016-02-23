@@ -1,7 +1,7 @@
-package com.gamingsmod.fortuneblocks.override;
+package com.gamingsmod.fortuneblocks.common.override;
 
-import com.gamingsmod.fortuneblocks.helper.NBTHelper;
-import com.gamingsmod.fortuneblocks.helper.OreDictionaryHelper;
+import com.gamingsmod.fortuneblocks.common.helper.NBTHelper;
+import com.gamingsmod.fortuneblocks.common.helper.OreDictionaryHelper;
 import net.minecraft.item.*;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

@@ -1,6 +1,6 @@
-package com.gamingsmod.fortuneblocks;
+package com.gamingsmod.fortuneblocks.common;
 
-import com.gamingsmod.fortuneblocks.reference.Reference;
+import com.gamingsmod.fortuneblocks.common.reference.Reference;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

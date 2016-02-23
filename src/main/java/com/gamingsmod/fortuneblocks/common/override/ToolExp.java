@@ -1,8 +1,8 @@
-package com.gamingsmod.fortuneblocks.override;
+package com.gamingsmod.fortuneblocks.common.override;
 
-import com.gamingsmod.fortuneblocks.evalate.AxeXp;
-import com.gamingsmod.fortuneblocks.evalate.PickaxeXp;
-import com.gamingsmod.fortuneblocks.helper.NBTHelper;
+import com.gamingsmod.fortuneblocks.common.evaluate.AxeXp;
+import com.gamingsmod.fortuneblocks.common.evaluate.PickaxeXp;
+import com.gamingsmod.fortuneblocks.common.helper.NBTHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

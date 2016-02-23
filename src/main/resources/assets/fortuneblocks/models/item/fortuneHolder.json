@@ -1,0 +1,6 @@
+{
+  "parent": "fortuneblocks:item/_standard_item",
+  "textures": {
+    "layer0": "fortuneblocks:items/fortuneHolder"
+  }
+}

@@ -1,8 +1,9 @@
-package com.gamingsmod.fortuneblocks;
+package com.gamingsmod.fortuneblocks.common;
 
-import com.gamingsmod.fortuneblocks.commands.CommandExtraFortune;
-import com.gamingsmod.fortuneblocks.override.FortuneOverride;
-import com.gamingsmod.fortuneblocks.override.ToolExp;
+import com.gamingsmod.fortuneblocks.common.commands.CommandExtraFortune;
+import com.gamingsmod.fortuneblocks.common.init.ModItems;
+import com.gamingsmod.fortuneblocks.common.override.FortuneOverride;
+import com.gamingsmod.fortuneblocks.common.override.ToolExp;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -13,7 +14,7 @@ public class CommonProxy
 {
     public void preinit(FMLPreInitializationEvent e)
     {
-
+        ModItems.init();
     }
 
     public void init(FMLInitializationEvent e)
@@ -24,7 +25,7 @@ public class CommonProxy
 
     public void postinit(FMLPostInitializationEvent e)
     {
-
+        //NO-OP
     }
 
     public void serverStarting(FMLServerStartingEvent e)

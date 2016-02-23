@@ -1,7 +1,7 @@
-package com.gamingsmod.fortuneblocks.commands;
+package com.gamingsmod.fortuneblocks.common.commands;
 
-import com.gamingsmod.fortuneblocks.helper.NBTHelper;
-import com.gamingsmod.fortuneblocks.override.ToolExp;
+import com.gamingsmod.fortuneblocks.common.helper.NBTHelper;
+import com.gamingsmod.fortuneblocks.common.override.ToolExp;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;

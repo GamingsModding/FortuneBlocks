@@ -1,6 +1,6 @@
-package com.gamingsmod.fortuneblocks.evalate;
+package com.gamingsmod.fortuneblocks.common.evaluate;
 
-import com.gamingsmod.fortuneblocks.helper.OreDictionaryHelper;
+import com.gamingsmod.fortuneblocks.common.helper.OreDictionaryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
