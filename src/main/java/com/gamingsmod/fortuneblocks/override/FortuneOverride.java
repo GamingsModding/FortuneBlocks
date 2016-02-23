@@ -25,7 +25,7 @@ public class FortuneOverride
                         Double fortune = fortuneLvl + extraFortune;
                         if (!(itemDropping.getItem() instanceof ItemBlock)) {
                             e.drops.clear();
-                            e.drops.add(new ItemStack(itemDropping.getItem(), fortune.intValue()));
+                            e.drops.add(new ItemStack(itemDropping.getItem(), fortune.intValue() < 1 ? 1 : fortune.intValue()));
                         }
                     }
                 } else if (e.harvester.getHeldItem().getItem() instanceof ItemAxe) {
@@ -33,7 +33,7 @@ public class FortuneOverride
                         ItemStack itemDropping = e.drops.iterator().next();
                         int fortuneLvl = e.fortuneLevel;
                         Double fortune = fortuneLvl + extraFortune;
-                        itemDropping.stackSize = fortune.intValue() == 0 ? 1 : fortune.intValue();
+                        itemDropping.stackSize = fortune.intValue() < 1 ? 1 : fortune.intValue();
                         e.drops.clear();
                         e.drops.add(itemDropping);
                     }
