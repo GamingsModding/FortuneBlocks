@@ -13,12 +13,12 @@ public class FortuneOverride
     {
         if (e.harvester != null) {
             ItemStack heldItemStack = e.harvester.getHeldItem();
-            Item heldItem = heldItemStack.getItem();
-            if (!e.isSilkTouching && (heldItem instanceof ItemPickaxe || heldItem instanceof ItemAxe)) {
+            if (!e.isSilkTouching && heldItemStack != null && (heldItemStack.getItem() instanceof ItemPickaxe || heldItemStack.getItem() instanceof ItemAxe)) {
+                Item heldItem = heldItemStack.getItem();
                 double extraFortune = NBTHelper.getDouble(e.harvester.getHeldItem(), ToolExp.TAG_EXTRAFORTUNE);
                 extraFortune = extraFortune / 100;
 
-                if (e.harvester.getHeldItem().getItem() instanceof ItemPickaxe) {
+                if (heldItem instanceof ItemPickaxe) {
                     if (OreDictionaryHelper.getFirstOreDicName(new ItemStack(e.state.getBlock())).startsWith("ore")) {
                         ItemStack itemDropping = e.drops.iterator().next();
                         int fortuneLvl = e.fortuneLevel;
@@ -28,7 +28,7 @@ public class FortuneOverride
                             e.drops.add(new ItemStack(itemDropping.getItem(), fortune.intValue() < 1 ? 1 : fortune.intValue()));
                         }
                     }
-                } else if (e.harvester.getHeldItem().getItem() instanceof ItemAxe) {
+                } else if (heldItem instanceof ItemAxe) {
                     if (OreDictionaryHelper.getFirstOreDicName(new ItemStack(e.state.getBlock())).startsWith("log")) {
                         ItemStack itemDropping = e.drops.iterator().next();
                         int fortuneLvl = e.fortuneLevel;
