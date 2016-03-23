@@ -2,15 +2,13 @@ package com.gamingsmod.fortuneblocks.common.override;
 
 import com.gamingsmod.fortuneblocks.common.evaluate.AxeXp;
 import com.gamingsmod.fortuneblocks.common.evaluate.PickaxeXp;
+import com.gamingsmod.fortuneblocks.common.evaluate.SpadeXp;
 import com.gamingsmod.fortuneblocks.common.helper.NBTHelper;
 import com.gamingsmod.fortuneblocks.common.items.ItemFortuneHolder;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemAxe;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -33,7 +31,7 @@ public class ToolExp
             return;
         }
 
-        if (e.itemStack.getItem() instanceof ItemPickaxe || e.itemStack.getItem() instanceof ItemAxe) {
+        if (e.itemStack.getItem() instanceof ItemPickaxe || e.itemStack.getItem() instanceof ItemAxe || e.itemStack.getItem() instanceof ItemSpade) {
             addPercentInformation(e.itemStack, e.toolTip);
         }
     }
@@ -43,7 +41,7 @@ public class ToolExp
     {
         if (e.getPlayer() != null && isRealPlayer(e.getPlayer())) {
             ItemStack pickaxe = e.getPlayer().getHeldItem();
-            if (pickaxe != null && (pickaxe.getItem() instanceof ItemPickaxe || pickaxe.getItem() instanceof ItemAxe)) {
+            if (pickaxe != null && (pickaxe.getItem() instanceof ItemPickaxe || pickaxe.getItem() instanceof ItemAxe || pickaxe.getItem() instanceof ItemSpade)) {
                 ItemStack stack = getHolder(e.getPlayer());
                 double level = NBTHelper.getDouble(stack, TAG_EXTRAFORTUNE);
                 Block broken = e.state.getBlock();
@@ -91,6 +89,8 @@ public class ToolExp
             return PickaxeXp.evaluate(block);
         } else if (tool instanceof ItemAxe) {
             return AxeXp.evalate(block);
+        } else if (tool instanceof ItemSpade) {
+            return SpadeXp.evalate(block);
         }
         return 0;
     }

@@ -37,6 +37,13 @@ public class FortuneOverride
                         e.drops.clear();
                         e.drops.add(itemDropping);
                     }
+                } else if (heldItem instanceof ItemSpade) {
+                    ItemStack itemDropping = e.drops.iterator().next();
+                    int fortuneLvl = e.fortuneLevel;
+                    Double fortune = fortuneLvl + extraFortune;
+                    itemDropping.stackSize = fortune.intValue() < 1 ? 1 : fortune.intValue();
+                    e.drops.clear();
+                    e.drops.add(new ItemStack(itemDropping.getItem(), fortune.intValue() < 1 ? 1 : fortune.intValue()));
                 }
             }
         }
