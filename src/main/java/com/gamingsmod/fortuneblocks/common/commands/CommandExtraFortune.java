@@ -1,6 +1,7 @@
 package com.gamingsmod.fortuneblocks.common.commands;
 
 import com.gamingsmod.fortuneblocks.common.helper.NBTHelper;
+import com.gamingsmod.fortuneblocks.common.items.ItemFortuneHolder;
 import com.gamingsmod.fortuneblocks.common.override.ToolExp;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -45,7 +46,7 @@ public class CommandExtraFortune extends CommandBase
             Item itemHeld = itemStackHeld.getItem();
             int amountToAdd = parseInt(args[1]);
 
-            if (itemHeld instanceof ItemTool) {
+            if (itemHeld instanceof ItemTool || itemHeld instanceof ItemFortuneHolder) {
                 double extFortune = NBTHelper.getDouble(itemStackHeld, ToolExp.TAG_EXTRAFORTUNE);
                 extFortune += amountToAdd;
                 NBTHelper.setDouble(itemStackHeld, ToolExp.TAG_EXTRAFORTUNE, extFortune);
