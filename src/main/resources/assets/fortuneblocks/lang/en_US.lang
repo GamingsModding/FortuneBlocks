@@ -1,5 +1,6 @@
 # Item
 item.fortuneblocks:fortuneHolder.name=Fortune Holder
+item.fortuneblocks:fortuneHolder.info=Holds extra fortune instead of it going into your tool
 
 # Tooltips
 fortuneblocks.tooltip.extfortune=Extra Fortune: %s

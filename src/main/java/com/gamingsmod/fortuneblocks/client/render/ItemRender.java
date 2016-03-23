@@ -15,7 +15,7 @@ public class ItemRender
 
     private static void register(Item item)
     {
-        System.out.println(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(6 + Reference.MOD_ID_LOWER.length()));
+//        System.out.println(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(6 + Reference.MOD_ID_LOWER.length()));
         Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
                 .register(item, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(6 + Reference.MOD_ID_LOWER.length()), "inventory"));
     }
